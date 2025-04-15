@@ -43,7 +43,9 @@ Type 'help' for available commands or scroll down to explore.
             
             <div className="flex flex-wrap gap-4">
               <a
-                href="/contact"
+                href="https://forms.gle/z3ydrjgaEhQ5VTw66"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-mono py-2.5 px-4 rounded transition-colors"
               >
                 Contact Me
