@@ -488,198 +488,176 @@ Type "snake" to play again, or "quit" to exit.
   };
 };
 
-// 6. Pong Game (Visual ASCII Game)
-export const pongGame = () => {
-  const width = 30;
-  const height = 15;
-  let playerPaddle = Math.floor(height / 2);
-  let computerPaddle = Math.floor(height / 2);
-  let ballX = Math.floor(width / 2);
-  let ballY = Math.floor(height / 2);
-  let ballDirX = 1;
-  let ballDirY = 0;
-  let playerScore = 0;
-  let computerScore = 0;
+// 6. Math Game
+export const mathGame = () => {
+  let score = 0;
+  let currentProblem = null;
   let gameOver = false;
-  let gameLoopId: number | null = null;
-  let waitingForInput = false;
+  let gameLoopId = null;
+  let difficulty = 'easy';
+  let maxRounds = 10;
+  let currentRound = 0;
   
-  const paddleSize = 3;
+  const generateProblem = () => {
+    let a, b, operator, solution, operatorSymbol;
+    
+    switch (difficulty) {
+      case 'easy':
+        a = Math.floor(Math.random() * 10) + 1;
+        b = Math.floor(Math.random() * 10) + 1;
+        operator = Math.floor(Math.random() * 2); // 0: addition, 1: subtraction
+        break;
+      case 'medium':
+        a = Math.floor(Math.random() * 20) + 1;
+        b = Math.floor(Math.random() * 20) + 1;
+        operator = Math.floor(Math.random() * 3); // 0: addition, 1: subtraction, 2: multiplication
+        break;
+      case 'hard':
+        a = Math.floor(Math.random() * 50) + 1;
+        b = Math.floor(Math.random() * 30) + 1;
+        operator = Math.floor(Math.random() * 4); // 0: addition, 1: subtraction, 2: multiplication, 3: division
+        // For division, ensure we have clean integers
+        if (operator === 3) {
+          b = Math.floor(Math.random() * 10) + 1;
+          a = b * Math.floor(Math.random() * 10) + 1;
+        }
+        break;
+      default:
+        a = Math.floor(Math.random() * 10) + 1;
+        b = Math.floor(Math.random() * 10) + 1;
+        operator = 0;
+    }
+    
+    // Calculate solution based on operator
+    switch (operator) {
+      case 0:
+        solution = a + b;
+        operatorSymbol = '+';
+        break;
+      case 1:
+        // Ensure a ≥ b for subtraction to avoid negative numbers in easy/medium modes
+        if (a < b && difficulty !== 'hard') {
+          [a, b] = [b, a];
+        }
+        solution = a - b;
+        operatorSymbol = '-';
+        break;
+      case 2:
+        solution = a * b;
+        operatorSymbol = '*';
+        break;
+      case 3:
+        solution = a / b;
+        operatorSymbol = '/';
+        break;
+    }
+    
+    return {
+      a,
+      b,
+      operatorSymbol,
+      solution,
+      problemText: `${a} ${operatorSymbol} ${b} = ?`
+    };
+  };
   
   const renderGame = () => {
-    let board = Array(height).fill(0).map(() => Array(width).fill(" "));
-    
-    // Draw paddles
-    for (let i = 0; i < paddleSize; i++) {
-      const playerY = playerPaddle - Math.floor(paddleSize / 2) + i;
-      const computerY = computerPaddle - Math.floor(paddleSize / 2) + i;
-      
-      if (playerY >= 0 && playerY < height) {
-        board[playerY][0] = "│";
-      }
-      
-      if (computerY >= 0 && computerY < height) {
-        board[computerY][width - 1] = "│";
-      }
+    currentRound++;
+    if (currentRound > maxRounds) {
+      gameOver = true;
+      return `
+MATH GAME COMPLETED!
+
+Final Score: ${score}/${maxRounds}
+${score === maxRounds ? "Perfect score! You're a math genius!" : 
+  score >= maxRounds * 0.7 ? "Great job!" : 
+  score >= maxRounds * 0.5 ? "Good effort!" : 
+  "Keep practicing!"}
+
+Type "math" to play again.
+      `;
     }
     
-    // Draw ball
-    if (ballX >= 0 && ballX < width && ballY >= 0 && ballY < height) {
-      board[ballY][ballX] = "●";
-    }
-    
-    // Build the board string
-    let boardString = "+" + "─".repeat(width) + "+\n";
-    
-    for (let y = 0; y < height; y++) {
-      boardString += "|";
-      for (let x = 0; x < width; x++) {
-        boardString += board[y][x];
-      }
-      boardString += "|\n";
-    }
-    
-    boardString += "+" + "─".repeat(width) + "+\n";
+    currentProblem = generateProblem();
     
     return `
-PONG GAME - Player ${playerScore} | ${computerScore} Computer
+MATH GAME - Round ${currentRound}/${maxRounds} - Score: ${score}
 
-${boardString}
-Use 'w' to move paddle up, 's' to move paddle down
-Type "quit" to exit the game
-`;
+Solve this problem: ${currentProblem.problemText}
+
+Type your answer and press Enter.
+Type "quit" to exit or "difficulty" to change difficulty.
+    `;
   };
   
-  const movePlayerPaddle = (direction: string) => {
-    if (gameOver) return;
-    waitingForInput = false;
+  const checkAnswer = (answer) => {
+    if (gameOver) return "Game is over. Type 'math' to play again.";
     
-    switch (direction.toLowerCase()) {
-      case "w": // Up
-        if (playerPaddle > 0) {
-          playerPaddle--;
-        }
-        break;
-      case "s": // Down
-        if (playerPaddle < height - 1) {
-          playerPaddle++;
-        }
-        break;
-    }
-  };
-  
-  const update = () => {
-    if (gameOver || waitingForInput) return renderGame();
-    
-    // Move the ball
-    ballX += ballDirX;
-    ballY += ballDirY;
-    
-    // Basic AI for computer paddle - follows the ball with slight delay
-    if (computerPaddle < ballY && Math.random() > 0.3) {
-      computerPaddle = Math.min(computerPaddle + 1, height - 1);
-    } else if (computerPaddle > ballY && Math.random() > 0.3) {
-      computerPaddle = Math.max(computerPaddle - 1, 0);
-    }
-    
-    // Ball collision with top/bottom walls
-    if (ballY <= 0 || ballY >= height - 1) {
-      ballDirY *= -1;
-    }
-    
-    // Ball collision with player paddle
-    if (ballX === 1) {
-      const paddleTop = playerPaddle - Math.floor(paddleSize / 2);
-      const paddleBottom = paddleTop + paddleSize - 1;
-      
-      if (ballY >= paddleTop && ballY <= paddleBottom) {
-        ballDirX = 1;
-        // Adjust vertical direction based on where ball hits paddle
-        const hitPosition = ballY - paddleTop;
-        if (hitPosition === 0) ballDirY = -1;
-        else if (hitPosition === paddleSize - 1) ballDirY = 1;
-        else ballDirY = 0;
-      }
-    }
-    
-    // Ball collision with computer paddle
-    if (ballX === width - 2) {
-      const paddleTop = computerPaddle - Math.floor(paddleSize / 2);
-      const paddleBottom = paddleTop + paddleSize - 1;
-      
-      if (ballY >= paddleTop && ballY <= paddleBottom) {
-        ballDirX = -1;
-        // Adjust vertical direction based on where ball hits paddle
-        const hitPosition = ballY - paddleTop;
-        if (hitPosition === 0) ballDirY = -1;
-        else if (hitPosition === paddleSize - 1) ballDirY = 1;
-        else ballDirY = 0;
-      }
-    }
-    
-    // Ball out of bounds - player's side
-    if (ballX < 0) {
-      computerScore++;
-      ballX = Math.floor(width / 2);
-      ballY = Math.floor(height / 2);
-      ballDirX = 1;
-      ballDirY = 0;
-      waitingForInput = true;
-      
-      if (computerScore >= 5) {
-        gameOver = true;
-        if (gameLoopId) clearInterval(gameLoopId);
-        return `
-GAME OVER! Computer wins ${computerScore}-${playerScore}!
+    if (answer.toLowerCase() === "difficulty") {
+      return `
+Current difficulty: ${difficulty}
 
-Type "pong" to play again, or "quit" to exit.
-`;
-      }
+Type "easy", "medium", or "hard" to change difficulty:
+- easy: Addition and subtraction with numbers 1-10
+- medium: Addition, subtraction, and multiplication with numbers 1-20
+- hard: All operations including division with numbers 1-50
+      `;
     }
     
-    // Ball out of bounds - computer's side
-    if (ballX >= width) {
-      playerScore++;
-      ballX = Math.floor(width / 2);
-      ballY = Math.floor(height / 2);
-      ballDirX = -1;
-      ballDirY = 0;
-      waitingForInput = true;
-      
-      if (playerScore >= 5) {
-        gameOver = true;
-        if (gameLoopId) clearInterval(gameLoopId);
-        return `
-GAME OVER! You win ${playerScore}-${computerScore}!
+    if (answer.toLowerCase() === "easy" || answer.toLowerCase() === "medium" || answer.toLowerCase() === "hard") {
+      difficulty = answer.toLowerCase();
+      return `
+Difficulty set to ${difficulty}!
 
-Type "pong" to play again, or "quit" to exit.
-`;
-      }
+${renderGame()}
+      `;
     }
     
-    return renderGame();
+    const userAnswer = parseFloat(answer);
+    
+    if (isNaN(userAnswer)) {
+      return "Please enter a valid number as your answer.";
+    }
+    
+    const isCorrect = Math.abs(userAnswer - currentProblem.solution) < 0.001;
+    
+    if (isCorrect) {
+      score++;
+      return `
+Correct! ${currentProblem.problemText} ${currentProblem.solution}
+
+${renderGame()}
+      `;
+    } else {
+      return `
+Incorrect! The answer to ${currentProblem.problemText} is ${currentProblem.solution}
+
+${renderGame()}
+      `;
+    }
   };
   
   return {
     start: () => {
-      playerScore = 0;
-      computerScore = 0;
+      score = 0;
       gameOver = false;
-      ballX = Math.floor(width / 2);
-      ballY = Math.floor(height / 2);
-      ballDirX = 1;
-      ballDirY = 0;
-      waitingForInput = true; // Start with waiting for user to be ready
-      return renderGame();
+      currentRound = 0;
+      return `
+MATH GAME
+
+Test your math skills with various arithmetic problems!
+Difficulty: ${difficulty} (type "difficulty" to change)
+
+${renderGame()}
+      `;
     },
-    movePlayerPaddle,
-    update,
+    checkAnswer,
     isOver: () => gameOver,
     quit: () => {
       if (gameLoopId) clearInterval(gameLoopId);
-      return "Pong game exited.";
+      return "Math game exited.";
     },
-    setGameLoopId: (id: number) => {
+    setGameLoopId: (id) => {
       gameLoopId = id;
     }
   };
@@ -847,7 +825,7 @@ export const rabbitHoleGame = () => {
 };
 
 // Helper functions for games with keyboard input
-export const handleGameKeyInput = (key: string, gameState: any) => {
+export const handleGameKeyInput = (key, gameState) => {
   // Don't echo the key to the terminal output - handled by the game update
   if (gameState && typeof gameState.movePlayerPaddle === 'function' && ['w', 's'].includes(key.toLowerCase())) {
     gameState.movePlayerPaddle(key);

@@ -4,6 +4,7 @@ import { useTheme } from "./ThemeProvider";
 import { cn } from "@/lib/utils";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const { theme } = useTheme();
@@ -20,39 +21,39 @@ export function Header() {
           <nav className="hidden md:flex">
             <ul className="flex items-center gap-6">
               <li>
-                <a href="/" className="text-sm hover:text-primary transition-colors">
+                <Link to="/" className="text-sm hover:text-primary transition-colors">
                   home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about" className="text-sm hover:text-primary transition-colors">
+                <Link to="/about" className="text-sm hover:text-primary transition-colors">
                   about
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/experience" className="text-sm hover:text-primary transition-colors">
+                <Link to="/experience" className="text-sm hover:text-primary transition-colors">
                   experience
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/skills" className="text-sm hover:text-primary transition-colors">
+                <Link to="/skills" className="text-sm hover:text-primary transition-colors">
                   skills
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/projects" className="text-sm hover:text-primary transition-colors">
+                <Link to="/projects" className="text-sm hover:text-primary transition-colors">
                   projects
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terminal" className="text-sm hover:text-primary transition-colors">
+                <Link to="/terminal" className="text-sm hover:text-primary transition-colors">
                   terminal
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="text-sm hover:text-primary transition-colors">
+                <Link to="/contact" className="text-sm hover:text-primary transition-colors">
                   contact
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -75,67 +76,67 @@ export function Header() {
           <nav className="container py-4">
             <ul className="flex flex-col space-y-4">
               <li>
-                <a 
-                  href="/" 
+                <Link
+                  to="/" 
                   className="block py-2 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   home
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="/about" 
+                <Link
+                  to="/about" 
                   className="block py-2 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   about
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="/experience" 
+                <Link
+                  to="/experience" 
                   className="block py-2 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   experience
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="/skills" 
+                <Link
+                  to="/skills" 
                   className="block py-2 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   skills
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="/projects" 
+                <Link
+                  to="/projects" 
                   className="block py-2 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   projects
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="/terminal" 
+                <Link
+                  to="/terminal" 
                   className="block py-2 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   terminal
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="/contact" 
+                <Link
+                  to="/contact" 
                   className="block py-2 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   contact
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

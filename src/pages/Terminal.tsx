@@ -86,9 +86,8 @@ export default function TerminalPage() {
                       <ul className="list-disc pl-5 space-y-2">
                         <li>Command history (use up/down arrows)</li>
                         <li>ASCII animations (matrix, steam locomotive)</li>
-                        <li>Classic terminal games (tetris, pong, snake)</li>
+                        <li>Classic terminal games (snake, math game)</li>
                         <li>Keyboard navigation with WASD controls for games</li>
-                        <li>Ctrl+C interruption for any running process</li>
                         <li>Multiple retro theme options</li>
                         <li>Matrix-inspired themes and effects</li>
                         <li>Retro CRT monitor styling with green glow</li>
@@ -111,7 +110,7 @@ export default function TerminalPage() {
                       
                       <p>
                         The terminal uses global keyboard event listeners to capture keystrokes even when the input field doesn't have focus,
-                        allowing seamless control during games and animations. The Ctrl+C interrupt handler works system-wide to exit any running process.
+                        allowing seamless control during games and animations.
                       </p>
                       
                       <div className="bg-muted/30 p-3 rounded-md border border-border mt-2">
@@ -145,9 +144,9 @@ export default function TerminalPage() {
                             <li><code className="text-primary">sl</code> - Steam locomotive</li>
                             <li><code className="text-primary">rabbit</code> - Red/Blue pill choice</li>
                             <li><code className="text-primary">game</code> - Number guessing game</li>
-                            <li><code className="text-primary">pong</code> - Play Pong (use W/S keys)</li>
                             <li><code className="text-primary">snake</code> - Play Snake (use WASD)</li>
                             <li><code className="text-primary">tictactoe</code> - Play Tic Tac Toe</li>
+                            <li><code className="text-primary">math</code> - Math practice game</li>
                           </ul>
                         </div>
                       </div>
@@ -157,7 +156,7 @@ export default function TerminalPage() {
                   <DialogFooter className="mt-4">
                     <div className="bg-muted/30 p-3 rounded-md border border-border w-full">
                       <p className="text-sm text-muted-foreground">
-                        <span className="font-bold">Tip:</span> Press Ctrl+C to exit any running animation or game without pressing Enter.
+                        <span className="font-bold">Tip:</span> Use arrow keys for command history and WASD keys for navigation in games.
                       </p>
                     </div>
                   </DialogFooter>
@@ -238,7 +237,7 @@ export default function TerminalPage() {
             <div className="md:col-span-2">
               <p className="text-muted-foreground mb-4">
                 Interact with the terminal interface. Type 'help' to see available commands.
-                Use the WASD keys to play games like Pong and Snake.
+                Use the WASD keys to play games like Snake.
               </p>
               
               <div className={`${isFullscreen ? 'flex-grow' : 'mt-6'}`}>
@@ -248,8 +247,8 @@ export default function TerminalPage() {
                     welcomeMessage={`
 Welcome to the Retro Terminal Interface v1.0
 Type 'help' to see available commands.
-Try the 'matrix', 'sl', 'snake', 'pong', or ASCII art commands for special effects!
-Use W/S keys for Pong and WASD keys for Snake.
+Try the 'matrix', 'sl', 'snake', 'math', or ASCII art commands for special effects!
+Use WASD keys for Snake and navigation.
                     `}
                     glowEffect={glowEffect}
                   />
@@ -263,8 +262,8 @@ Use W/S keys for Pong and WASD keys for Snake.
                 <div className="grid grid-cols-2 gap-2">
                   <Button variant="outline" size="sm" className="justify-start" onClick={() => navigator.clipboard.writeText('matrix')}>matrix</Button>
                   <Button variant="outline" size="sm" className="justify-start" onClick={() => navigator.clipboard.writeText('sl')}>sl</Button>
-                  <Button variant="outline" size="sm" className="justify-start" onClick={() => navigator.clipboard.writeText('pong')}>pong</Button>
                   <Button variant="outline" size="sm" className="justify-start" onClick={() => navigator.clipboard.writeText('snake')}>snake</Button>
+                  <Button variant="outline" size="sm" className="justify-start" onClick={() => navigator.clipboard.writeText('math')}>math</Button>
                   <Button variant="outline" size="sm" className="justify-start" onClick={() => navigator.clipboard.writeText('fortune')}>fortune</Button>
                   <Button variant="outline" size="sm" className="justify-start" onClick={() => navigator.clipboard.writeText('rabbit')}>rabbit</Button>
                 </div>
@@ -273,9 +272,9 @@ Use W/S keys for Pong and WASD keys for Snake.
               <div className="bg-card border border-border rounded-lg p-4">
                 <h2 className="text-lg font-semibold mb-3">Game Controls</h2>
                 <ul className="space-y-2 text-sm">
-                  <li><span className="font-mono font-bold">W</span> - Move up / Paddle up</li>
+                  <li><span className="font-mono font-bold">W</span> - Move up</li>
                   <li><span className="font-mono font-bold">A</span> - Move left</li>
-                  <li><span className="font-mono font-bold">S</span> - Move down / Paddle down</li>
+                  <li><span className="font-mono font-bold">S</span> - Move down</li>
                   <li><span className="font-mono font-bold">D</span> - Move right</li>
                   <li><span className="font-mono font-bold">Q</span> - Quit game</li>
                 </ul>
@@ -322,7 +321,7 @@ Use W/S keys for Pong and WASD keys for Snake.
           </div>
           
           <div className="text-muted-foreground text-sm mt-4">
-            <p>Tip: Try typing 'matrix', 'rabbit', 'sl', 'pong', 'snake', 'fortune [category]', or 'ascii [art-name]' to discover easter eggs.</p>
+            <p>Tip: Try typing 'matrix', 'rabbit', 'sl', 'snake', 'math', 'fortune [category]', or 'ascii [art-name]' to discover easter eggs.</p>
           </div>
         </div>
       </div>
