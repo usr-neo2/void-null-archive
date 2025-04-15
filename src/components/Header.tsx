@@ -1,6 +1,7 @@
 
-import { Menu } from "lucide-react";
+import { Menu, Palette } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import { cn } from "@/lib/utils";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useState } from "react";
 import { Link } from "react-router-dom";

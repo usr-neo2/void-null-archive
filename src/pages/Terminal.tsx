@@ -24,6 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Toggle } from "@/components/ui/toggle";
 
 export default function TerminalPage() {
   const [isFullscreen, setIsFullscreen] = useState(false);
