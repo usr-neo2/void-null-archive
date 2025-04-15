@@ -708,10 +708,196 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "wake" to wake up
+      Type "swallow" to swallow the pill
+      Type "question" to ask Morpheus more questions
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        wake: "wakeup",
+        swallow: "swallow",
+        question: "question"
+      }
+    },
+    question: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "You take the red pill, you stay in Wonderland,    *
+      *     and I show you how deep the rabbit hole goes.     *
+      *     Remember, all I'm offering is the truth,          *
+      *     nothing more."                                    *
+      *                                                       *
+      *    Morpheus looks at you intently, his reflective     *
+      *    sunglasses hiding his eyes.                        *
+      *                                                       *
+      *********************************************************
+      
+      Type "matrix" to ask what the Matrix is
+      Type "real" to ask what is real
+      Type "wake" to take the pill and wake up
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        matrix: "explain",
+        real: "reality",
+        wake: "wakeup"
+      }
+    },
+    explain: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "The Matrix is everywhere. It is all around us.    *
+      *     Even now, in this very room. You can see it       *
+      *     when you look out your window or when you turn    *
+      *     on your television. You can feel it when you go   *
+      *     to work... when you go to church... when you      *
+      *     pay your taxes. It is the world that has been     *
+      *     pulled over your eyes to blind you from the       *
+      *     truth."                                           *
+      *                                                       *
+      *********************************************************
+      
+      Type "truth" to ask what truth
+      Type "wake" to take the pill and wake up
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        truth: "truth",
+        wake: "wakeup"
+      }
+    },
+    truth: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "That you are a slave, Neo. Like everyone else     *
+      *     you were born into bondage. Into a prison that    *
+      *     you cannot taste or see or touch. A prison for    *
+      *     your mind."                                       *
+      *                                                       *
+      *    The pill in your hand seems to pulse with an       *
+      *    otherworldly energy.                               *
+      *                                                       *
+      *********************************************************
+      
+      Type "wake" to swallow the pill and wake up
+      Type "why" to ask why Morpheus is helping you
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        wake: "wakeup",
+        why: "chosen"
+      }
+    },
+    chosen: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "Because we believe the prophecy, Neo. We believe  *
+      *     that you are The One. You may be the one we've    *
+      *     been waiting for all these years. You could be    *
+      *     the one to end the war and free humanity."        *
+      *                                                       *
+      *    The choice is still yours.                         *
+      *                                                       *
+      *********************************************************
+      
+      Type "wake" to swallow the pill and wake up
+      Type "doubt" to express doubt about being The One
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        wake: "wakeup",
+        doubt: "doubt"
+      }
+    },
+    doubt: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "It's happening exactly as before. The Oracle      *
+      *     prophesized his return."                          *
+      *                                                       *
+      *    Trinity steps forward. "I've seen what you can     *
+      *    do. I've been watching you, Neo."                  *
+      *                                                       *
+      *    "Nobody has ever done anything like this..."       *
+      *                                                       *
+      *********************************************************
+      
+      Type "wake" to finally swallow the pill
       Type "quit" to exit this simulation
       `,
       options: {
         wake: "wakeup"
+      }
+    },
+    reality: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "What is 'real'? How do you define 'real'?         *
+      *     If you're talking about what you can feel,        *
+      *     what you can smell, what you can taste and see,   *
+      *     then 'real' is simply electrical signals          *
+      *     interpreted by your brain."                       *
+      *                                                       *
+      *********************************************************
+      
+      Type "wake" to take the pill and wake up
+      Type "more" to ask more questions
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        wake: "wakeup",
+        more: "question"
+      }
+    },
+    swallow: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    As the pill dissolves, you see strange code        *
+      *    scrolling in your vision. Green symbols cascade    *
+      *    like digital rain.                                 *
+      *                                                       *
+      *    Your perception shifts.                            *
+      *                                                       *
+      *    "This is your last chance. After this there is     *
+      *     no turning back."                                 *
+      *                                                       *
+      *********************************************************
+      
+      Type "continue" to continue this journey
+      Type "resist" to try to resist the pill's effects
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        continue: "wakeup",
+        resist: "noescape"
+      }
+    },
+    noescape: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You try to resist, but it's too late.              *
+      *                                                       *
+      *    The digital world around you fragments.            *
+      *                                                       *
+      *    A mirror nearby begins to liquify...               *
+      *    The liquid touches your skin, spreading rapidly.   *
+      *                                                       *
+      *    "What's happening to me?!"                         *
+      *                                                       *
+      *********************************************************
+      
+      Type "accept" to accept the transformation
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        accept: "wakeup"
       }
     },
     wakeup: {
@@ -728,12 +914,37 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "follow" to follow the white rabbit
+      Type "look" to look around you
       Type "nebuchadnezzar" to board the ship
       Type "quit" to exit this simulation
       `,
       options: {
         follow: "follow",
+        look: "powerpods",
         nebuchadnezzar: "ship"
+      }
+    },
+    powerpods: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You look around in horror. Endless fields of       *
+      *    human pods stretch in all directions.              *
+      *                                                       *
+      *    A massive machine approaches, its mechanical       *
+      *    arms reaching for you. You're disconnected         *
+      *    violently and flushed down a disposal tube.        *
+      *                                                       *
+      *    "He's going into arrest!"                          *
+      *    "He's going to make it."                           *
+      *                                                       *
+      *********************************************************
+      
+      Type "gasp" to gasp for air
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        gasp: "ship"
       }
     },
     ship: {
@@ -751,11 +962,83 @@ export const rabbitHoleGame = () => {
       
       Type "training" to begin combat training
       Type "operator" to speak with the operator
+      Type "tank" to speak with Tank
+      Type "rest" to get some rest first
       Type "quit" to exit this simulation
       `,
       options: {
         training: "training",
-        operator: "operator"
+        operator: "operator",
+        tank: "tank",
+        rest: "rest"
+      }
+    },
+    tank: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "Hey there, coppertop. Name's Tank, operator.      *
+      *     I'll be your guide to the digital wonderland.     *
+      *     Got programs for just about anything you need     *
+      *     to know - kung fu, helicopter piloting, you       *
+      *     name it. So what's your pleasure?"                *
+      *                                                       *
+      *********************************************************
+      
+      Type "kunfu" to learn Kung Fu
+      Type "jujitsu" to learn Jiu Jitsu
+      Type "guns" to learn weapons training
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        kunfu: "kunfu",
+        jujitsu: "kunfu",
+        guns: "weapons"
+      }
+    },
+    rest: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You rest in your quarters, contemplating the       *
+      *    enormity of what you've learned.                   *
+      *                                                       *
+      *    Morpheus enters. "I know what you're thinking.     *
+      *     Why me? But I've seen you in my dreams. You're    *
+      *     The One, Neo. The One who will end this war."     *
+      *                                                       *
+      *********************************************************
+      
+      Type "ready" to say you're ready for training
+      Type "notme" to say you're not The One
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        ready: "training",
+        notme: "doubt2"
+      }
+    },
+    doubt2: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "I know exactly what you mean. I felt the same     *
+      *     when Morpheus told me I wasn't The One."          *
+      *                                                       *
+      *    Trinity sits beside you. "But what if he is        *
+      *     right about you? What if you are The One?"        *
+      *                                                       *
+      *    "You're going to have to make a choice."           *
+      *                                                       *
+      *********************************************************
+      
+      Type "believe" to start believing
+      Type "training" to begin training anyway
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        believe: "believe2",
+        training: "training"
       }
     },
     operator: {
@@ -773,11 +1056,166 @@ export const rabbitHoleGame = () => {
       
       Type "program" to load a training program
       Type "exit" to find the nearest exit
+      Type "construct" to learn about the construct
       Type "quit" to exit this simulation
       `,
       options: {
         program: "kunfu",
-        exit: "phonebooth"
+        exit: "phonebooth",
+        construct: "construct"
+      }
+    },
+    construct: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "This is the Construct. It's our loading program.  *
+      *     We can load anything from clothing, to equipment, *
+      *     to weapons, to training simulations."             *
+      *                                                       *
+      *    You look around the endless white space.           *
+      *                                                       *
+      *    "Right now, we're inside a computer program?"      *
+      *                                                       *
+      *********************************************************
+      
+      Type "digital" to ask about digital self
+      Type "loadme" to ask for a training program
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        digital: "residual",
+        loadme: "kunfu"
+      }
+    },
+    residual: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "This... is the construct. It's our loading        *
+      *     program. We can load anything, from clothing,     *
+      *     to equipment, weapons, training simulations,      *
+      *     anything we need."                                *
+      *                                                       *
+      *    "Right now, we're inside a computer program?"      *
+      *                                                       *
+      *    "Is that so hard to believe? Your clothes are      *
+      *     different. The plugs in your arms and head are    *
+      *     gone. Your hair has changed. Your appearance      *
+      *     now is what we call residual self image. It is    *
+      *     the mental projection of your digital self."      *
+      *                                                       *
+      *********************************************************
+      
+      Type "real" to ask what is real
+      Type "train" to start training
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        real: "desert",
+        train: "training"
+      }
+    },
+    desert: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    The white space suddenly transforms into a         *
+      *    television studio, and then into a desolate        *
+      *    desert landscape.                                  *
+      *                                                       *
+      *    "This is the world as it exists today. Welcome     *
+      *     to the desert of the real."                       *
+      *                                                       *
+      *    The sky is black and scorched. The earth barren.   *
+      *                                                       *
+      *********************************************************
+      
+      Type "war" to ask what happened
+      Type "back" to return to the ship
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        war: "machines",
+        back: "ship"
+      }
+    },
+    machines: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "We don't know who struck first, us or them,       *
+      *     but we know that it was us that scorched the sky. *
+      *     At the time, they were dependent on solar power   *
+      *     and it was believed that they would be unable     *
+      *     to survive without an energy source as abundant   *
+      *     as the sun."                                      *
+      *                                                       *
+      *    Morpheus gestures to the barren landscape.         *
+      *                                                       *
+      *    "Throughout human history, we have been            *
+      *     dependent on machines to survive. Fate, it seems, *
+      *     is not without a sense of irony."                 *
+      *                                                       *
+      *********************************************************
+      
+      Type "human" to ask about humans
+      Type "back" to return to the ship
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        human: "battery",
+        back: "ship"
+      }
+    },
+    battery: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "The human body generates more bio-electricity     *
+      *     than a 120-volt battery and over 25,000 BTUs      *
+      *     of body heat. Combined with a form of fusion,     *
+      *     the machines had found all the energy they        *
+      *     would ever need."                                 *
+      *                                                       *
+      *    Morpheus holds up a battery. "There are fields,    *
+      *     endless fields, where human beings are no longer  *
+      *     born... we are grown."                            *
+      *                                                       *
+      *********************************************************
+      
+      Type "matrix" to ask about the Matrix
+      Type "back" to return to the ship
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        matrix: "control",
+        back: "ship"
+      }
+    },
+    control: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "The Matrix is a computer-generated dream world    *
+      *     built to keep us under control in order to        *
+      *     change a human being into this."                  *
+      *                                                       *
+      *    Morpheus holds up a battery.                       *
+      *                                                       *
+      *    "What is the Matrix? Control. The Matrix is a      *
+      *     computer-generated dream world built to keep      *
+      *     us under control."                                *
+      *                                                       *
+      *********************************************************
+      
+      Type "train" to begin training
+      Type "back" to return to the ship
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        train: "training",
+        back: "ship"
       }
     },
     phonebooth: {
@@ -793,7 +1231,31 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "answer" to pick up the phone
+      Type "wait" to wait and see what happens
       Type "fight" to stand your ground against the agents
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        answer: "escape",
+        wait: "toolate",
+        fight: "agents"
+      }
+    },
+    toolate: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "What are you waiting for, Neo? GO!"               *
+      *                                                       *
+      *    The agents are closing in fast. The phone          *
+      *    continues to ring, more urgently now.              *
+      *                                                       *
+      *    Time is running out!                               *
+      *                                                       *
+      *********************************************************
+      
+      Type "answer" to pick up the phone now
+      Type "fight" to face the agents
       Type "quit" to exit this simulation
       `,
       options: {
@@ -816,12 +1278,37 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "run" to flee to the phone booth
+      Type "dodge" to dodge their bullets
       Type "fight" to attempt the impossible
       Type "quit" to exit this simulation
       `,
       options: {
         run: "escape",
+        dodge: "dodge",
         fight: "death"
+      }
+    },
+    dodge: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You attempt to dodge as bullets fly toward you.    *
+      *    You're fast, but not fast enough.                  *
+      *                                                       *
+      *    A bullet grazes your arm.                          *
+      *                                                       *
+      *    "Jesus, he's fast!"                                *
+      *    "Get to the exit, Neo! Now!"                       *
+      *                                                       *
+      *********************************************************
+      
+      Type "run" to sprint to the phone booth
+      Type "continue" to continue fighting
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        run: "escape",
+        continue: "death"
       }
     },
     death: {
@@ -838,10 +1325,12 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "restart" to start over
+      Type "believe" to try again, but believe
       Type "quit" to exit this simulation
       `,
       options: {
-        restart: "start"
+        restart: "start",
+        believe: "believe2"
       }
     },
     escape: {
@@ -854,6 +1343,33 @@ export const rabbitHoleGame = () => {
       *                                                       *
       *    "Nicely done. Unplugging before the agents         *
       *     could get to you. You're learning."               *
+      *                                                       *
+      *********************************************************
+      
+      Type "oracle" to visit the Oracle
+      Type "training" to continue training
+      Type "question" to ask Morpheus a question
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        oracle: "oracle",
+        training: "training",
+        question: "whyme"
+      }
+    },
+    whyme: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "Why did you choose me?" you ask Morpheus.         *
+      *                                                       *
+      *    "I didn't choose you, Neo. You chose yourself.     *
+      *     Tomorrow, you will meet the Oracle. She's the     *
+      *     one who told me I would find you."                *
+      *                                                       *
+      *    "What will she tell me?"                           *
+      *                                                       *
+      *    "What you need to hear. That's all."               *
       *                                                       *
       *********************************************************
       
@@ -882,11 +1398,37 @@ export const rabbitHoleGame = () => {
       
       Type "faster" to move faster
       Type "jump" to attempt the jump program
+      Type "focus" to try to focus your mind
       Type "quit" to exit this simulation
       `,
       options: {
         faster: "believe",
-        jump: "jump"
+        jump: "jump",
+        focus: "focus"
+      }
+    },
+    focus: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You focus, slowing your breathing.                 *
+      *                                                       *
+      *    "Don't think you are, know you are."               *
+      *                                                       *
+      *    For a moment, you move with incredible speed.      *
+      *    Your fist comes within inches of Morpheus's face.  *
+      *                                                       *
+      *    "Good. Again."                                     *
+      *                                                       *
+      *********************************************************
+      
+      Type "again" to try again
+      Type "more" to try more programs
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        again: "training",
+        more: "programs"
       }
     },
     jump: {
@@ -903,12 +1445,39 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "again" to try the jump again
+      Type "spoon" to remember the spoon
       Type "continue" to move on to other training
       Type "quit" to exit this simulation
       `,
       options: {
         again: "jump",
+        spoon: "spoon",
         continue: "training" 
+      }
+    },
+    spoon: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "Do not try and bend the spoon. That's impossible. *
+      *     Instead... only try to realize the truth."        *
+      *                                                       *
+      *    "What truth?"                                      *
+      *                                                       *
+      *    "There is no spoon."                               *
+      *                                                       *
+      *    With this realization, you attempt the jump again. *
+      *    This time, you soar across the impossible gap.     *
+      *                                                       *
+      *********************************************************
+      
+      Type "whoa" to express amazement
+      Type "more" to try more training
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        whoa: "believe2",
+        more: "training"
       }
     },
     kunfu: {
@@ -943,18 +1512,21 @@ export const rabbitHoleGame = () => {
       *    - Combat Training                                  *
       *    - Jump Program                                     *
       *    - Weapons Training                                 *
+      *    - Vehicle Training                                 *
       *                                                       *
       *********************************************************
       
       Type "combat" for combat training
       Type "jump" for the jump program
       Type "weapons" for weapons training
+      Type "vehicle" for vehicle training
       Type "quit" to exit this simulation
       `,
       options: {
         combat: "training",
         jump: "jump",
-        weapons: "weapons"
+        weapons: "weapons",
+        vehicle: "chopper"
       }
     },
     weapons: {
@@ -971,6 +1543,30 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "ready" to enter the Matrix
+      Type "shoot" to practice shooting
+      Type "more" for more training
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        ready: "mission",
+        shoot: "practice",
+        more: "programs"
+      }
+    },
+    practice: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You practice with various weapons, your skill      *
+      *    growing with each simulation.                      *
+      *                                                       *
+      *    "Dodge this."                                      *
+      *                                                       *
+      *    You move with impossible speed, dodging bullets.   *
+      *                                                       *
+      *********************************************************
+      
+      Type "ready" to say you're ready for a real mission
       Type "more" for more training
       Type "quit" to exit this simulation
       `,
@@ -1040,11 +1636,84 @@ export const rabbitHoleGame = () => {
       
       Type "sorry" to apologize
       Type "how" to ask how she knew
+      Type "temet" to ask about the sign above the door
       Type "quit" to exit this simulation
       `,
       options: {
         sorry: "cookies",
-        how: "cookies"
+        how: "cookies",
+        temet: "nosce"
+      }
+    },
+    nosce: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You look above the door and see a sign that reads  *
+      *    "Temet Nosce."                                     *
+      *                                                       *
+      *    "It means 'Know Thyself'," the Oracle explains.    *
+      *                                                       *
+      *    "A good reminder for anyone seeking answers."      *
+      *                                                       *
+      *********************************************************
+      
+      Type "one" to ask if you're The One
+      Type "cookies" to accept her cookies
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        one: "notone",
+        cookies: "cookies"
+      }
+    },
+    notone: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "Sorry, kid. You got the gift, but it looks like   *
+      *     you're waiting for something."                    *
+      *                                                       *
+      *    "What?"                                            *
+      *                                                       *
+      *    "Your next life, maybe. Who knows?"                *
+      *                                                       *
+      *    She hands you a cookie. "Here, take a cookie.      *
+      *    I promise, by the time you're done eating it,      *
+      *    you'll feel right as rain."                        *
+      *                                                       *
+      *********************************************************
+      
+      Type "eat" to eat the cookie
+      Type "morpheus" to ask about Morpheus
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        eat: "mission",
+        morpheus: "protect"
+      }
+    },
+    protect: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "Morpheus believes in you, Neo. And no one, not    *
+      *     you, not even me, can convince him otherwise."    *
+      *                                                       *
+      *    "What does this mean?"                             *
+      *                                                       *
+      *    "It means that Morpheus sacrificed himself to      *
+      *     save you because he believes you are The One.     *
+      *     He is going to sacrifice himself to show you      *
+      *     that you're not."                                 *
+      *                                                       *
+      *********************************************************
+      
+      Type "save" to swear to save Morpheus
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        save: "mission"
       }
     },
     cookies: {
@@ -1085,12 +1754,129 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "rescue" to rescue Morpheus
+      Type "plan" to ask about the plan
       Type "chopper" to get a helicopter
       Type "quit" to exit this simulation
       `,
       options: {
         rescue: "rescue",
+        plan: "plan",
         chopper: "chopper"
+      }
+    },
+    plan: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "The plan? There is no plan, Neo."                 *
+      *                                                       *
+      *    Trinity checks her weapons.                        *
+      *                                                       *
+      *    "We're going to save Morpheus because that's       *
+      *     what Morpheus would do. No one has ever done      *
+      *     anything like this before."                       *
+      *                                                       *
+      *    "That's why it's going to work."                   *
+      *                                                       *
+      *********************************************************
+      
+      Type "ready" to say you're ready
+      Type "lobby" to enter the lobby
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        ready: "rescue",
+        lobby: "lobby"
+      }
+    },
+    lobby: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You enter the government building lobby.           *
+      *    Security guards approach.                          *
+      *                                                       *
+      *    "Please remove any metallic items you're carrying: *
+      *     keys, loose change..."                            *
+      *                                                       *
+      *    Metal detectors beep as they scan the arsenal      *
+      *    under your coats.                                  *
+      *                                                       *
+      *********************************************************
+      
+      Type "fight" to engage the guards
+      Type "stealth" to try a stealthy approach
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        fight: "lobby_fight",
+        stealth: "detected"
+      }
+    },
+    detected: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "Sir, would you please remove any metallic items?" *
+      *                                                       *
+      *    The guard becomes suspicious.                      *
+      *                                                       *
+      *    "Weapons. They have weapons."                      *
+      *                                                       *
+      *    There's no choice now...                           *
+      *                                                       *
+      *********************************************************
+      
+      Type "fight" to engage the guards
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        fight: "lobby_fight"
+      }
+    },
+    lobby_fight: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    The lobby erupts in chaos.                         *
+      *    You move with impossible speed, dodging bullets,   *
+      *    running on walls.                                  *
+      *                                                       *
+      *    In a hail of gunfire, you and Trinity clear the    *
+      *    entire security team.                              *
+      *                                                       *
+      *    "Get up, they're coming."                          *
+      *                                                       *
+      *********************************************************
+      
+      Type "elevator" to head for the elevator
+      Type "stairs" to take the stairs
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        elevator: "elevator",
+        stairs: "elevator"
+      }
+    },
+    elevator: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "There is no spoon."                               *
+      *                                                       *
+      *    You ascend in the elevator, preparing for what     *
+      *    awaits at the top.                                 *
+      *                                                       *
+      *    Trinity places a bomb on the emergency hatch.      *
+      *    "Neo, no one has ever done anything like this."    *
+      *                                                       *
+      *********************************************************
+      
+      Type "rescue" to continue the rescue mission
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        rescue: "rescue"
       }
     },
     chopper: {
@@ -1155,11 +1941,35 @@ export const rabbitHoleGame = () => {
       
       Type "fight" to fight Agent Smith
       Type "run" to try to escape
+      Type "smell" to comment on his smell
       Type "quit" to exit this simulation
       `,
       options: {
         fight: "fight",
-        run: "run"
+        run: "run",
+        smell: "smell"
+      }
+    },
+    smell: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    "I can smell it."                                  *
+      *                                                       *
+      *    "Smell what, Mr. Anderson?"                        *
+      *                                                       *
+      *    "I can smell your fear. For the first time in      *
+      *     your life, you're afraid."                        *
+      *                                                       *
+      *    Smith's face contorts with rage. He attacks.       *
+      *                                                       *
+      *********************************************************
+      
+      Type "fight" to engage in combat
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        fight: "fight"
       }
     },
     run: {
@@ -1203,10 +2013,10 @@ export const rabbitHoleGame = () => {
       `,
       options: {
         believe: "theone",
-        dodge: "dodge"
+        dodge: "dodge2"
       }
     },
-    dodge: {
+    dodge2: {
       text: `
       *********************************************************
       *                                                       *
@@ -1381,12 +2191,38 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "return" to return to the ship
+      Type "dance" to attend the Zion gathering
       Type "train" to begin training
       Type "quit" to exit this simulation
       `,
       options: {
         return: "ship",
+        dance: "dance",
         train: "training"
+      }
+    },
+    dance: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    Hundreds of people gather in a cave-like chamber.  *
+      *    The beat of drums fills the air as people dance,   *
+      *    celebrating their humanity.                        *
+      *                                                       *
+      *    "Zion! Hear me! It is true what many of you have   *
+      *     heard. The machines have gathered an army, and    *
+      *     at this very moment that army is drawing nearer   *
+      *     to our home."                                     *
+      *                                                       *
+      *    "Tonight, let us shake this cave!"                 *
+      *                                                       *
+      *********************************************************
+      
+      Type "return" to return to the ship
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        return: "ship"
       }
     },
     blue: {
@@ -1403,6 +2239,27 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "sleep" to go back to sleep
+      Type "fight" to try to fight the sedation
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        sleep: "sleep",
+        fight: "blueresist"
+      }
+    },
+    blueresist: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You try to resist, but the blue pill is strong.    *
+      *                                                       *
+      *    "The body cannot live without the mind."           *
+      *                                                       *
+      *    Your consciousness fades...                        *
+      *                                                       *
+      *********************************************************
+      
+      Type "sleep" to surrender to sleep
       Type "quit" to exit this simulation
       `,
       options: {
@@ -1426,10 +2283,38 @@ export const rabbitHoleGame = () => {
       
       Type "restart" to start over
       Type "ignore" to continue your ordinary life
+      Type "deja" to follow the feeling of déjà vu
       Type "quit" to exit this simulation
       `,
       options: {
         restart: "start",
+        ignore: "ignorance",
+        deja: "deja"
+      }
+    },
+    deja: {
+      text: `
+      *********************************************************
+      *                                                       *
+      *    You notice a black cat walk by, and then another   *
+      *    that looks exactly the same.                       *
+      *                                                       *
+      *    "Déjà vu..."                                       *
+      *                                                       *
+      *    Something's not right. The world around you seems  *
+      *    to flicker for just a moment.                      *
+      *                                                       *
+      *    You see a white rabbit tattooed on someone's       *
+      *    shoulder as they pass by.                          *
+      *                                                       *
+      *********************************************************
+      
+      Type "follow" to follow the white rabbit
+      Type "ignore" to ignore it and go to work
+      Type "quit" to exit this simulation
+      `,
+      options: {
+        follow: "restart",
         ignore: "ignorance"
       }
     },
@@ -1452,10 +2337,12 @@ export const rabbitHoleGame = () => {
       *********************************************************
       
       Type "restart" to start over
+      Type "wake" to try to wake up
       Type "quit" to exit this simulation
       `,
       options: {
-        restart: "start"
+        restart: "start",
+        wake: "restart"
       }
     }
   };
@@ -1494,4 +2381,3 @@ export const handleGameKeyInput = (key, gameState) => {
   
   return { suppressEcho: false };
 };
-
