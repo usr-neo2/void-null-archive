@@ -1,3 +1,4 @@
+
 // Simple terminal games
 
 // 1. Tic Tac Toe game
@@ -827,11 +828,6 @@ export const rabbitHoleGame = () => {
 // Helper functions for games with keyboard input
 export const handleGameKeyInput = (key, gameState) => {
   // Don't echo the key to the terminal output - handled by the game update
-  if (gameState && typeof gameState.movePlayerPaddle === 'function' && ['w', 's'].includes(key.toLowerCase())) {
-    gameState.movePlayerPaddle(key);
-    return { suppressEcho: true };
-  }
-  
   if (gameState && typeof gameState.move === 'function' && ['w', 'a', 's', 'd'].includes(key.toLowerCase())) {
     gameState.move(key);
     return { suppressEcho: true };
