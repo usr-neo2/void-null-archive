@@ -1,0 +1,259 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 196 80% 36%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 196 80% 36%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 84% 5%;
+
+    --radius: 0.5rem;
+    
+    /* Terminal Colors */
+    --terminal-red: 0 84% 60%;
+    --terminal-green: 142 76% 36%;
+    --terminal-yellow: 38 92% 50%;
+    --terminal-blue: 210 100% 56%;
+    --terminal-purple: 271 81% 56%;
+    --terminal-cyan: 196 94% 43%;
+    --terminal-orange: 27 96% 61%;
+    --terminal-pink: 340 82% 59%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 131 90% 45%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 18%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 213 27% 84%;
+    
+    /* Terminal Colors - boosted saturation for dark mode */
+    --terminal-red: 0 94% 65%;
+    --terminal-green: 142 86% 45%;
+    --terminal-yellow: 38 97% 60%;
+    --terminal-blue: 210 100% 66%;
+    --terminal-purple: 271 91% 66%;
+    --terminal-cyan: 196 94% 53%;
+    --terminal-orange: 27 96% 71%;
+    --terminal-pink: 340 92% 69%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .terminal-window {
+    @apply bg-card/80 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden;
+  }
+
+  .terminal-header {
+    @apply bg-muted/50 px-4 py-2 flex items-center gap-2;
+  }
+
+  .terminal-body {
+    @apply p-6 font-mono text-sm scrollbar-thin;
+  }
+  
+  /* Enhanced with CRT glow */
+  .shadow-terminal {
+    text-shadow: 0 0 2px hsl(var(--terminal-green)), 
+                0 0 5px hsl(var(--terminal-green) / 50%),
+                0 0 10px hsl(var(--terminal-green) / 30%);
+    filter: brightness(1.2);
+  }
+
+  .command-line {
+    @apply flex items-start gap-2;
+  }
+
+  .command-prompt {
+    @apply text-primary font-bold;
+  }
+
+  .command-input {
+    @apply text-foreground;
+  }
+
+  .command-output {
+    @apply ml-6 text-muted-foreground;
+  }
+
+  .typing-container {
+    @apply inline-flex;
+  }
+
+  .typing-text {
+    @apply overflow-hidden whitespace-nowrap border-r-2 border-primary animate-typing;
+  }
+
+  .cursor {
+    @apply border-r-2 border-primary h-5 ml-1 animate-blink;
+  }
+  
+  /* Retro terminal colors */
+  .text-terminal-red {
+    @apply text-[hsl(var(--terminal-red))];
+  }
+  
+  .text-terminal-green {
+    @apply text-[hsl(var(--terminal-green))];
+  }
+  
+  .text-terminal-yellow {
+    @apply text-[hsl(var(--terminal-yellow))];
+  }
+  
+  .text-terminal-blue {
+    @apply text-[hsl(var(--terminal-blue))];
+  }
+  
+  .text-terminal-purple {
+    @apply text-[hsl(var(--terminal-purple))];
+  }
+  
+  .text-terminal-cyan {
+    @apply text-[hsl(var(--terminal-cyan))];
+  }
+  
+  .text-terminal-orange {
+    @apply text-[hsl(var(--terminal-orange))];
+  }
+  
+  .text-terminal-pink {
+    @apply text-[hsl(var(--terminal-pink))];
+  }
+  
+  /* Flip card styles */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* Custom scrollbar styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 20px;
+  }
+  
+  /* CRT scan line effect */
+  .crt-scanlines {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .crt-scanlines::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      transparent 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* Terminal flicker animation */
+  @keyframes terminal-flicker {
+    0% { opacity: 1.0; }
+    3% { opacity: 0.9; }
+    6% { opacity: 1.0; }
+    9% { opacity: 0.9; }
+    12% { opacity: 1.0; }
+    80% { opacity: 1.0; }
+    83% { opacity: 0.8; }
+    87% { opacity: 1.0; }
+  }
+  
+  .terminal-flicker {
+    animation: terminal-flicker 8s infinite;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
